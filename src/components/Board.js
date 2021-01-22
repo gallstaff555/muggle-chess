@@ -3,8 +3,8 @@ import axios from "axios";
 import Chessboard from "chessboardjsx";
 import "./custom.scss";
 
-const Board = () => {
-    const [board, setBoard] = useState({ setup: "No board config" });
+const Board = (props) => {
+    const [board, setBoard] = useState({ setup: "start" });
 
     useEffect(() => {
         newGame();
@@ -16,6 +16,7 @@ const Board = () => {
                 "Access-Control-Allow-Origin": "*",
             },
             method: "GET",
+            //url: "http://localhost:4001/api/newgame",
             url: "https://mugglechess.azurewebsites.net/api/newgame",
         };
 
@@ -24,8 +25,9 @@ const Board = () => {
             .then((res) => {
                 setBoard((prevState) => ({
                     ...prevState,
-                    setup: JSON.stringify(res.data.board),
+                    setup: res.data,
                 }));
+                //console.log(res.data.board);
             })
             .catch((error) => {
                 console.log("there was a problem getting board from server");
@@ -48,20 +50,14 @@ const Board = () => {
 
     return (
         <span>
-            <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-                <div className='container-fluid'>
-                    <a className='navbar-brand'>Muggle Chess</a>
-                    <a className='nav-link active' aria-current='page'>
-                        Login
-                    </a>
-                </div>
-            </nav>
             <div>{board.setup}</div>
             <React.Fragment>
-                <Chessboard id='positionObject' position='2R5/4bppk/1p1p3Q/5R1P/4P3/5P2/r4q1P/7K b - - 6 50' />
+                <Chessboard id='positionObject' position={board.setup} />
             </React.Fragment>
         </span>
     );
 };
 
 export default Board;
+
+//'2R5/4bppk/1p1p3Q/5R1P/4P3/5P2/r4q1P/7K b - - 6 50'
