@@ -19,24 +19,3 @@ const App = () => {
 };
 
 export default App;
-
-/*
-const usersLookup = {
-    method: "GET",
-    url: "/users/names",
-};
-
-let otherUsers = [];
-
-await axios
-    .request(usersLookup)
-    .then((res) => {
-        otherUsers = [...res.data];
-    })
-    .catch((error) => {
-        console.log("there was a problem getting usernames from server");
-        console.error(error);
-    });
-
-this.setState({ otherUsers });
-*/

@@ -35,19 +35,6 @@ const Board = (props) => {
             });
     }
 
-    async function getMoves(boardConfiguration) {
-        const config = {
-            headers: {
-                "Access-Control-Allow-Origin": "*",
-            },
-            method: "POST",
-            data: {
-                board: boardConfiguration,
-            },
-            url: "https://mugglechess.azurewebsites.net/api/moves",
-        };
-    }
-
     return (
         <span>
             <div>{board.setup}</div>
