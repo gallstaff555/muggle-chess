@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Board from "./Board";
+import Chessboard from "chessboardjsx";
 import "./custom.scss";
 
 const App = () => {
@@ -13,9 +14,21 @@ const App = () => {
                     </a>
                 </div>
             </nav>
-            <Board></Board>
+            <div style={boardsContainer}>
+                <Board>
+                    {({ position, onDrop }) => (
+                        <Chessboard id='muggle-chess-1' position={position} onDrop={onDrop} />
+                    )}
+                </Board>
+            </div>
         </span>
     );
 };
 
 export default App;
+
+const boardsContainer = {
+    display: "flex",
+    justifyContent: "space-around",
+    alignItems: "center",
+};

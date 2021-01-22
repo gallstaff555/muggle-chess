@@ -1,50 +1,53 @@
-import React, { useState, useEffect } from "react";
+import React, { Component } from "react";
+import PropTypes from "prop-types";
 import axios from "axios";
-import Chessboard from "chessboardjsx";
 import "./custom.scss";
 
-const Board = (props) => {
-    const [board, setBoard] = useState({ setup: "start" });
+class Board extends Component {
+    static propTypes = { children: PropTypes.func };
 
-    useEffect(() => {
-        newGame();
-    }, []); //empty array means it will only fire once
+    state = { fen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" };
 
-    async function newGame() {
+    componentDidMount() {
+        this.setState({ fen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" });
+    }
+
+    onDrop = ({ sourceSquare, targetSquare }) => {
+        console.log(sourceSquare, targetSquare); //remember to upper case
+        this.validateMove(sourceSquare, targetSquare);
+    };
+
+    validateMove = async (from, to) => {
         const config = {
             headers: {
                 "Access-Control-Allow-Origin": "*",
             },
-            method: "GET",
-            //url: "http://localhost:4001/api/newgame",
-            url: "https://mugglechess.azurewebsites.net/api/newgame",
+            method: "POST",
+            url: "https://mugglechess.azurewebsites.net/api/move",
+            //url: "http://localhost:4001/api/move",
+            data: {
+                fen: this.state.fen,
+                moveFrom: from,
+                moveTo: to,
+            },
         };
 
         await axios
             .request(config)
             .then((res) => {
-                setBoard((prevState) => ({
-                    ...prevState,
-                    setup: res.data,
-                }));
+                console.log(res.data);
+                this.setState({ fen: res.data });
                 //console.log(res.data.board);
             })
             .catch((error) => {
-                console.log("there was a problem getting board from server");
+                console.log("there was a problem validating move from server");
                 console.error(error);
             });
-    }
+    };
 
-    return (
-        <span>
-            <div>{board.setup}</div>
-            <React.Fragment>
-                <Chessboard id='positionObject' position={board.setup} />
-            </React.Fragment>
-        </span>
-    );
-};
+    render() {
+        return this.props.children({ position: this.state.fen, onDrop: this.onDrop });
+    }
+}
 
 export default Board;
-
-//'2R5/4bppk/1p1p3Q/5R1P/4P3/5P2/r4q1P/7K b - - 6 50'
