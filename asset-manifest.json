@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/muggle-chess-client/static/css/main.4c1e4db0.chunk.css",
-    "main.js": "/muggle-chess-client/static/js/main.a549d605.chunk.js",
-    "main.js.map": "/muggle-chess-client/static/js/main.a549d605.chunk.js.map",
+    "main.js": "/muggle-chess-client/static/js/main.faf9fda1.chunk.js",
+    "main.js.map": "/muggle-chess-client/static/js/main.faf9fda1.chunk.js.map",
     "runtime-main.js": "/muggle-chess-client/static/js/runtime-main.6805e8a3.js",
     "runtime-main.js.map": "/muggle-chess-client/static/js/runtime-main.6805e8a3.js.map",
     "static/css/2.658248ec.chunk.css": "/muggle-chess-client/static/css/2.658248ec.chunk.css",
@@ -18,6 +18,6 @@
     "static/css/2.658248ec.chunk.css",
     "static/js/2.ec2c0237.chunk.js",
     "static/css/main.4c1e4db0.chunk.css",
-    "static/js/main.a549d605.chunk.js"
+    "static/js/main.faf9fda1.chunk.js"
   ]
 }
