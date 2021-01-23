@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import Board from "./Board";
 import Chessboard from "chessboardjsx";
 import "./custom.scss";
@@ -8,8 +8,10 @@ const App = () => {
         <span>
             <nav className='navbar navbar-expand-lg navbar-light bg-light'>
                 <div className='container-fluid'>
-                    <a className='navbar-brand'>Muggle Chess</a>
-                    <a className='nav-link active' aria-current='page'>
+                    <a className='navbar-brand' href='/'>
+                        Muggle Chess
+                    </a>
+                    <a className='nav-link active' href='/' aria-current='page'>
                         Login
                     </a>
                 </div>

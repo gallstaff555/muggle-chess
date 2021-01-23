@@ -1,48 +1,53 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import PropTypes from "prop-types";
+import Chess from "chess.js";
 import axios from "axios";
 import "./custom.scss";
+
+//"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" is start position
+const game = new Chess();
 
 class Board extends Component {
     static propTypes = { children: PropTypes.func };
 
-    state = { fen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" };
+    state = { fen: game.fen() };
 
     componentDidMount() {
-        this.setState({ fen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" });
+        this.setState({ fen: game.fen() });
     }
 
     onDrop = ({ sourceSquare, targetSquare }) => {
-        console.log(sourceSquare, targetSquare); //remember to upper case
-        this.validateMove(sourceSquare, targetSquare);
+        console.log(sourceSquare, targetSquare);
+        const move = game.move({
+            from: sourceSquare,
+            to: targetSquare,
+            promotion: "q",
+        });
+
+        if (move === null) return;
+
+        this.setState({ fen: game.fen() });
+
+        this.sendMove();
     };
 
-    validateMove = async (from, to) => {
+    sendMove = async () => {
         const config = {
             headers: {
                 "Access-Control-Allow-Origin": "*",
             },
             method: "POST",
-            url: "https://mugglechess.azurewebsites.net/api/move",
-            //url: "http://localhost:4001/api/move",
+            //url: "https://mugglechess.azurewebsites.net/api/move",
+            url: "http://localhost:4001/api/move",
             data: {
                 fen: this.state.fen,
-                moveFrom: from,
-                moveTo: to,
             },
         };
 
-        await axios
-            .request(config)
-            .then((res) => {
-                console.log(res.data);
-                this.setState({ fen: res.data });
-                //console.log(res.data.board);
-            })
-            .catch((error) => {
-                console.log("there was a problem validating move from server");
-                console.error(error);
-            });
+        await axios.request(config).catch((error) => {
+            console.log("there was a problem validating move from server");
+            console.error(error);
+        });
     };
 
     render() {
