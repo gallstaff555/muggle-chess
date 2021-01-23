@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/.github.io/muggle-chess-client/static/css/main.4c1e4db0.chunk.css",
+    "main.js": "/.github.io/muggle-chess-client/static/js/main.de10750f.chunk.js",
+    "main.js.map": "/.github.io/muggle-chess-client/static/js/main.de10750f.chunk.js.map",
+    "runtime-main.js": "/.github.io/muggle-chess-client/static/js/runtime-main.ed363f54.js",
+    "runtime-main.js.map": "/.github.io/muggle-chess-client/static/js/runtime-main.ed363f54.js.map",
+    "static/css/2.658248ec.chunk.css": "/.github.io/muggle-chess-client/static/css/2.658248ec.chunk.css",
+    "static/js/2.ec2c0237.chunk.js": "/.github.io/muggle-chess-client/static/js/2.ec2c0237.chunk.js",
+    "static/js/2.ec2c0237.chunk.js.map": "/.github.io/muggle-chess-client/static/js/2.ec2c0237.chunk.js.map",
+    "index.html": "/.github.io/muggle-chess-client/index.html",
+    "static/css/2.658248ec.chunk.css.map": "/.github.io/muggle-chess-client/static/css/2.658248ec.chunk.css.map",
+    "static/css/main.4c1e4db0.chunk.css.map": "/.github.io/muggle-chess-client/static/css/main.4c1e4db0.chunk.css.map",
+    "static/js/2.ec2c0237.chunk.js.LICENSE.txt": "/.github.io/muggle-chess-client/static/js/2.ec2c0237.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.ed363f54.js",
+    "static/css/2.658248ec.chunk.css",
+    "static/js/2.ec2c0237.chunk.js",
+    "static/css/main.4c1e4db0.chunk.css",
+    "static/js/main.de10750f.chunk.js"
+  ]
+}
