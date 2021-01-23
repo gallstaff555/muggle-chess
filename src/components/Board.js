@@ -34,7 +34,8 @@ class Board extends Component {
     sendMove = async () => {
         const config = {
             headers: {
-                "Access-Control-Allow-Origin": "*",
+                "Access-Control-Allow-Origin": "https://gallstaff555.github.io/muggle-chess-client/",
+                "Content-Type": "application/x-www-form-urlencoded",
             },
             method: "POST",
             url: "https://mugglechess.azurewebsites.net/api/move",
