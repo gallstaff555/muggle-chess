@@ -34,20 +34,22 @@ class Board extends Component {
     sendMove = async () => {
         const config = {
             headers: {
-                "Access-Control-Allow-Origin": "*", //https://gallstaff555.github.io/muggle-chess-client/
-                "Content-Type": "application/x-www-form-urlencoded",
-                "Access-Control-Allow-Methods": "GET, PUT, POST, DELETE, OPTIONS",
+                "Content-Type": "application/json",
+                "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS",
             },
             method: "POST",
             url: "https://mugglechess.azurewebsites.net/api/move",
-            //url: "http://localhost:4001/api/move",
             data: {
                 fen: this.state.fen,
+            },
+            validateStatus: (status) => {
+                return true; // I'm always returning true, you may want to do it depending on the status received
             },
         };
 
         await axios.request(config).catch((error) => {
             console.log("there was a problem validating move from server");
+            console.log(error);
             console.error(error);
         });
     };
