@@ -37,8 +37,8 @@ class Board extends Component {
                 "Access-Control-Allow-Origin": "*",
             },
             method: "POST",
-            //url: "https://mugglechess.azurewebsites.net/api/move",
-            url: "http://localhost:4001/api/move",
+            url: "https://mugglechess.azurewebsites.net/api/move",
+            //url: "http://localhost:4001/api/move",
             data: {
                 fen: this.state.fen,
             },
