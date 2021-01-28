@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import Chess from "chess.js";
 import axios from "axios";
 import "./custom.scss";
+const clientConfig = require("../config.js");
 
 //"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" is start position
 const game = new Chess();
@@ -38,7 +39,7 @@ class Board extends Component {
                 "Access-Control-Allow-Methods": "GET,PUT,POST,DELETE,OPTIONS",
             },
             method: "POST",
-            url: "https://mugglechess.azurewebsites.net/api/move",
+            url: `${clientConfig.backendURL}/api/move`,
             data: {
                 fen: this.state.fen,
             },

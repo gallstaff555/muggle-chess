@@ -1,21 +1,30 @@
+/*
+Main page for chess site.
+*/
+
 import React from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import Board from "./Board";
 import Chessboard from "chessboardjsx";
+import Navbar from "./Navbar";
 import "./custom.scss";
 
 const App = () => {
+    const { isLoading } = useAuth0();
+
+    //loading spinner
+    if (isLoading) {
+        return (
+            <div className='loading-icon'>
+                <div className='spinner-border' role='status'>
+                    <span className='sr-only'>Loading...</span>
+                </div>
+            </div>
+        );
+    }
     return (
         <span>
-            <nav className='navbar navbar-expand-lg navbar-light bg-light'>
-                <div className='container-fluid'>
-                    <a className='navbar-brand' href='/'>
-                        Muggle Chess
-                    </a>
-                    <a className='nav-link active' href='/' aria-current='page'>
-                        Login
-                    </a>
-                </div>
-            </nav>
+            <Navbar></Navbar>
             <div style={boardsContainer}>
                 <Board>
                     {({ position, onDrop }) => (

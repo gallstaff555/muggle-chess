@@ -6,4 +6,11 @@ $theme-colors: (
     "secondary": hsl(129, 73%, 30%),
 );
 
+.loading-icon {
+    display: flex;
+    margin-top: 20%;
+    text-align: center;
+    justify-content: center;
+}
+
 @import "node_modules/bootstrap/scss/bootstrap";
