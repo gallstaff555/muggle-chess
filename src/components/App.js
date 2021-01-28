@@ -21,6 +21,7 @@ const App = () => {
     return (
         <span>
             <Navbar />
+            <br></br>
             <Switch>
                 <Route path='/' exact component={Chessgame} />
                 <ProtectedRoute path='/profile' component={Profile} />
