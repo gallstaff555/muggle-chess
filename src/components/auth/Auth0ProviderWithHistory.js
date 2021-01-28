@@ -1,5 +1,5 @@
 import React from "react";
-import config from "../config";
+import config from "../../config";
 import { useHistory } from "react-router-dom";
 import { Auth0Provider } from "@auth0/auth0-react";
 

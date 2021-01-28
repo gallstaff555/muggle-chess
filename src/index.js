@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./components/App";
 import { BrowserRouter } from "react-router-dom";
-import Auth0ProviderWithHistory from "./components/Auth0ProviderWithHistory";
+import Auth0ProviderWithHistory from "./components/auth/Auth0ProviderWithHistory";
 import "bootstrap/dist/css/bootstrap.css";
 
 ReactDOM.render(
