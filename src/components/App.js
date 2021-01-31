@@ -24,6 +24,7 @@ const App = () => {
             <br></br>
             <Switch>
                 <Route path='/' exact component={Chessgame} />
+                <Route path='/user' exact component={Profile} />
                 <ProtectedRoute path='/profile' component={Profile} />
             </Switch>
         </span>
@@ -31,5 +32,3 @@ const App = () => {
 };
 
 export default App;
-
-//
