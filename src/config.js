@@ -4,10 +4,10 @@ const config = {
     auth0clientID: "EjCFbmU6oFyOPejgPat60ww9Ru6srhD1",
 
     /* test */
-    "backendURL": "http://localhost:4001",
+    //"backendURL": "http://localhost:4001",
 
     /* live */
-    //"backendURL": "https://mugglechess.azurewebsites.net",
+    "backendURL": "https://mugglechess.azurewebsites.net",
 };
 
 module.exports = config;
