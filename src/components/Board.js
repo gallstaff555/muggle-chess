@@ -1,29 +1,24 @@
 import { Component } from "react";
-//import PropTypes from "prop-types";
-import Chess from "chess.js";
 import axios from "axios";
 import "./custom.scss";
 const clientConfig = require("../config.js");
 
 //"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" is start position
-const game = new Chess();
 
 class Board extends Component {
-    //static propTypes = { children: PropTypes.func };
-
     state = {
-        //fen: game.fen(),
-        //fen: this.props.chessGame.fen(),
-        fen: "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1",
+        fen: "",
     };
 
     componentDidMount() {
-        this.setState({ fen: game.fen() });
+        this.setState({
+            fen: this.props.game.fen(),
+        });
     }
 
     onDrop = ({ sourceSquare, targetSquare }) => {
         console.log(sourceSquare, targetSquare);
-        const move = game.move({
+        const move = this.props.game.move({
             from: sourceSquare,
             to: targetSquare,
             promotion: "q",
@@ -31,7 +26,7 @@ class Board extends Component {
 
         if (move === null) return;
 
-        this.setState({ fen: game.fen() });
+        this.setState({ fen: this.state.fen });
 
         this.sendMove();
     };
@@ -46,7 +41,7 @@ class Board extends Component {
             method: "POST",
             url: `${clientConfig.backendURL}/api/move`,
             data: {
-                fen: this.state.fen,
+                fen: this.props.game.fen(),
             },
         };
 
@@ -57,7 +52,7 @@ class Board extends Component {
     };
 
     render() {
-        return this.props.children({ position: this.state.fen, onDrop: this.onDrop });
+        return this.props.children({ position: this.props.game.fen(), onDrop: this.onDrop });
     }
 }
 
